@@ -5,7 +5,7 @@
 -MySQL数据库：存储数据地方
 ~~~
 
-# 1.前端开发-标签
+# 1.HTML标签
 
 用户(浏览器)解析网站返回的字符串\
 ## 1.1 head标签`<head></head>`
@@ -31,7 +31,7 @@
 <title>Web_Test</title>
 ~~~
 
-![image-20220804113118859](D:\Notes\code\web\log_img\image-20220804113118859.png)
+![image-20220804113118859](.\log_img\image-20220804113118859.png)
 
 ## 1.2 body标签`<body></body>`
 
@@ -82,7 +82,7 @@
 </html>
 ~~~
 
-![image-20220804115155656](D:\Notes\code\web\log_img\image-20220804115155656.png)
+![image-20220804115155656](.\log_img\image-20220804115155656.png)
 
 ### 1.2.3 超链接`<a></a>`
 
@@ -183,7 +183,7 @@
 </ol>
 ~~~
 
-![image-20220804145017158](D:\Notes\code\web\log_img\image-20220804145017158.png)
+![image-20220804145017158](.\log_img\image-20220804145017158.png)
 
 ## 1.2.6 表格
 
@@ -222,7 +222,7 @@
 </table>
 ~~~
 
-![image-20220804145653934](D:\Notes\code\web\log_img\image-20220804145653934.png)
+![image-20220804145653934](.\log_img\image-20220804145653934.png)
 
 ## 1.2.7 input系列（7个）
 
@@ -264,4 +264,219 @@
 ~~~html
 <textarea rows="3"></textarea> # 默认3行
 ~~~
+
+## 知识点回顾和补充：
+
+### 网络请求：
+
+- 在浏览器的URL中写入地址，点击回车，访问。
+
+  ~~~
+  浏览器会发送数据过去，本质上发送的是字符串：
+  "GET /explore http1.1\r\nhost:...\r\nuser-agent\r\n..\r\n\r\n"
+  
+  浏览器会发送数据过去，本质上发送的是字符串：
+  "POST /explore http1.1\r\nhost:...\r\nuser-agent\r\n..\r\n\r\n数据"
+  ~~~
+
+- 浏览器向后端发送请求时
+
+  - GET请求【URL访问、表单提交】
+
+    - 现象：GET请求、跳转、向后台传入数据，数据会拼接在URL上。
+
+      ~~~
+      https://cn.bing.com/search?q=markdown&qs=n&form=QBRE&sp=-1&pq=markdown
+      ~~~
+
+      注意：GET请求数据会在URL中体现。
+
+  - POST请求【表单提交】
+
+    - 现象：提交数据不在URL中体现而是在请求体中。
+
+- 页面上的数据想要提交到后台：
+
+  - `<form>`标签包裹要提交的数据的标签。
+    - 提交方式：`method='get'`。
+    - 提交的地址：`action='/xx/xx/xx`。
+    - 在`<form>`标签里面必须有一个`submit`标签。
+
+  - 在`<form>`里面的一些标签：`input/select/textarea`
+    - 一定要写`name`属性。
+
+# 2.CSS样式
+
+> css，专门用于“美化”标签。
+
+## 2.1 CSS应用方式
+
+### 1.在标签上
+
+~~~html
+<img src="xxx" style="height:100px" />
+
+<div style="color:red;">
+    xxx
+</div>
+~~~
+
+### 2.在head标签中写style标签(*)
+
+~~~html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>get news</title>
+        <style>
+            .c1{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class='c1'>test</h1>
+    </body>
+</html>
+~~~
+
+### 3.写到文件中(*)
+
+common.css
+
+~~~css
+.c1{
+    height:100px;
+}
+.c2{
+    color:red;
+}
+~~~
+
+~~~html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>get news</title>
+        <link rel="stylesheet" href="common.css" />
+    </head>
+    <body>
+        <h1 class="c1">test</h1>
+    </body>
+</html>
+~~~
+
+## 2.2 选择器
+
+- ID选择器
+
+  ~~~html
+  #c1{
+  
+  }
+  
+  <div id="c1">
+      
+  </div>
+  ~~~
+
+- 类选择器(*)
+
+  ~~~html
+  .c1{
+  
+  }
+  
+  <div class="c1">
+      
+  </div>
+  ~~~
+
+- 标签选择器
+
+  ~~~html
+  div{
+  
+  }
+  
+  <div>
+      
+  </div>
+  ~~~
+
+- 属性选择器
+
+  ~~~html
+  <!DOCTYPE html>
+  <html>
+      <head>
+          <meta charset="UTF-8">
+          <title>css test</title>
+          <style>
+              input[type="text"]{
+                  border:1px solid red;
+              }
+              .c1[id="1"]{
+                  color:aqua;
+              }
+          </style>
+      </head>
+  
+      <body>
+          <input type="text">
+          <input type="password">
+          <div class="c1" id="0">a</div>
+          <div class="c1" id="1">b</div>
+          <div class="c1" id="2">c</div>
+      </body>
+  </html>
+  ~~~
+
+- 后代选择器
+
+  ~~~css
+  # 所有后代
+  .c2 li{
+  	color:aquamarine;
+  }
+  # 儿子
+  .c2 > a{
+  	color:brown;
+  }
+  ~~~
+
+  ~~~html
+  <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+  </ul>
+  <div class="c2">
+      <ul>
+          <li>a</li>
+          <li>b</li>
+          <li>c</li>
+      </ul>
+      <a>百度</a>
+      <div>
+          <a>谷歌</a>
+      </div>
+  </div>
+  ~~~
+
+关于选择器：
+
+> 多：类选择器、标签选择器、后代选择器
+>
+> 少：属性选择器、ID选择器
+
+关于多个样式和覆盖问题：
+
+> 如果有多个样式冲突，根据`<style>`标签内的顺序进行覆盖
+
+## 2.3 样式
+
+### 1.高度和宽度
 
