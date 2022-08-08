@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>title</title>
+        <style>
+            .c1{
+                display: inline-block;
+                height: 100px;
+                width: 500px;
+            }
+            .c2{
+                color:aqua;
+                font-size: 50px;
+                font-weight: 1000;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            .c3{
+                height: 59px;
+                width: 300px;
+                border: 1px solid red;
+
+                text-align: center;
+                line-height: 59px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="c1">block-test</div>
+        <span class="c1">inline-test</span>
+        <div style="display:inline;">block-inline-test</div>
+        <span style="display:block;">inline-block-test</span>
+
+        <div class="c2">color-font-test</div>
+
+        <div class="c3">align-test</div>
+        <div style="background-color: red">
+            <div style="float: right;" class="c3">float-test</div>
+            <div style="float: right;" class="c3">float-test</div>
+            <div style="float: right;" class="c3">float-test</div>
+            <div style="clear: both;"></div>
+        </div>
+        <div style="background-color: blue;height: 100px;width:900px;margin:10px auto;"></div>
+    </body>
+</html>
