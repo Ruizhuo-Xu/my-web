@@ -610,6 +610,14 @@ common.css
   }
   ~~~
 
+### 8.透明度
+
+~~~css
+.c1{
+    opacity: 0.7; /* 透明度 */
+}
+~~~
+
 ## 案例——顶部菜单
 
 ~~~html
@@ -855,5 +863,171 @@ common.css
   }
   ~~~
 
-  
+### 9.`hover`的常见用法(伪类)：
+
+~~~html
+  <!DOCTYPE html>
+  <html>
+      <head>
+          <meta charset="UTF-8">
+          <title>get news</title>
+          <style>
+              .c2{
+                  display: none;
+              }
+              .c1:hover .c2{
+                  display: block;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="c1">
+              <div>show image</div>
+              <div class="c2">
+                  <img src="../static/logo.png" />
+              </div>
+          </div>
+      </body>
+  </html>
+~~~
+
+  ### 10.`after`的常见用法(伪类)：
+~~~html
+  <!DOCTYPE html>
+  <html>
+      <head>
+          <meta charset="UTF-8">
+          <title>get news</title>
+          <style>
+              .clearfix:after{
+                  content: "";
+                  display: block;
+                  clear: both;
+              }
+              .item{
+                  float: left;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="clearfix">
+              <div class="item">xxx</div>
+              <div class="item">xxx</div>
+              <div class="item">xxx</div>
+          </div>
+      </body>
+  </html>
+~~~
+
+上述代码用于替换：`<div style="clear: both;"></div>`语句。
+
+### 11.position
+
+- fixed
+- relative
+- absolute
+
+#### fixed
+
+固定在页面的某个位置
+
+~~~css
+.back-top{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    right: 0px;
+    bottom: 50px;
+}
+~~~
+
+~~~html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UFT-8">
+        <title>dialog</title>
+        <style>
+            .content{
+                width: 300px;
+                height: 300px;
+                background-color: aqua;
+            }
+            .dialog{
+                background-color: white;
+                position: fixed;
+                width: 200px;
+                height: 300px;
+				
+                /*水平居中*/
+                top: 200px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                
+                z-index: 100;
+            }
+
+            .mask{
+                background-color: black;
+                position: fixed;
+                opacity: 0.9;
+                
+				/*全屏*/
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                
+                z-index: 99;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="content">
+            something
+        </div>
+        <div class="mask"></div>
+        <div class="dialog"></div>
+    </body>
+</html>
+~~~
+
+#### relative和absolute
+
+~~~html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>position</title>
+        <style>
+            .c1{
+                width: 300px;
+                height: 300px;
+                border: 1px solid red;
+
+                position: relative;
+            }
+            .c2{
+                width: 50px;
+                height: 50px;
+                background-color: aqua;
+
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="c1">
+            <div class="c2"></div>
+        </div>
+    </body>
+</html>
+~~~
 
